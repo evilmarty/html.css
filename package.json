@@ -1,0 +1,25 @@
+{
+  "name": "html-css",
+  "version": "1.0.0",
+  "description": "Make standard HTML pretty by simply including a single CSS file.",
+  "main": "index.js",
+  "scripts": {
+    "build": "gulp",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "html",
+    "css"
+  ],
+  "author": "Marty Zalega",
+  "license": "MIT",
+  "devDependencies": {
+    "browser-sync": "^2.21.0",
+    "caniuse-lite": "^1.0.30000784",
+    "cssnano": "^3.10.0",
+    "gulp": "^3.9.1",
+    "gulp-postcss": "^7.0.0",
+    "postcss": "^6.0.14",
+    "postcss-cssnext": "^3.0.2"
+  }
+}

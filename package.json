@@ -1,8 +1,8 @@
 {
   "name": "html-css",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Make standard HTML pretty by simply including a single CSS file.",
-  "main": "index.js",
+  "style": "dist/html.css",
   "scripts": {
     "build": "gulp",
     "serve": "gulp serve"
@@ -11,8 +11,20 @@
     "html",
     "css"
   ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/evilmarty/html.css.git"
+  },
+  "bugs": {
+    "url": "https://github.com/evilmarty/html.css/issues"
+  },
+  "files": [
+    "dist/*.{html,css}",
+    "src/*.{html,css}"
+  ],
   "author": "Marty Zalega",
   "license": "MIT",
+  "dependencies": {},
   "devDependencies": {
     "browser-sync": "^2.21.0",
     "caniuse-lite": "^1.0.30000784",

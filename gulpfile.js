@@ -2,6 +2,7 @@ const { series, src, dest, watch } = require('gulp')
 const postcss = require('gulp-postcss')
 const cssnext = require('postcss-cssnext')
 const cssnano = require('cssnano')
+const stylelint = require('gulp-stylelint')
 const browserSync = require('browser-sync').create()
 
 const plugins = [
@@ -16,6 +17,12 @@ const distPath = './dist'
 
 function css() {
   return src(cssGlob)
+    .pipe(stylelint({
+      failAfterError: true,
+      reporters: [
+        {formatter: 'verbose', console: true},
+      ],
+    }))
     .pipe(postcss(plugins))
     .pipe(dest(distPath))
     .pipe(browserSync.stream())
@@ -26,14 +33,25 @@ function html() {
     .pipe(dest(distPath))
 }
 
+function lint() {
+  return src(cssGlob)
+    .pipe(stylelint({
+      failAfterError: true,
+      reporters: [
+        {formatter: 'verbose', console: true},
+      ],
+    }))
+}
+
 function serve() {
   browserSync.init({ server: distPath })
 
   watch(htmlGlob, html).on('change', browserSync.reload)
-  watch(cssGlob, css)
+  watch(cssGlob, series(lint, css))
 }
 
-exports.css = css
+exports.css = series(lint, css)
 exports.html = html
-exports.serve = series(css, html, serve)
-exports.default = series(css, html)
+exports.lint = lint
+exports.serve = series(lint, css, html, serve)
+exports.default = series(lint, css, html)

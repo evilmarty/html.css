@@ -2,6 +2,8 @@
 
 Make standard HTML pretty by simply including a single CSS file.
 
+Check out the [docs/demo](https://marty.zalega.me/html.css)
+
 ## Purpose
 
 There are many great CSS frameworks and libraries but they all require using 
@@ -22,6 +24,12 @@ Add the following tag inside `<head>` in your HTML file:
 <link rel="stylesheet" href="html.css">
 ```
 
+or you can just use through [jsDelivr's CDN](https://www.jsdelivr.com):
+
+```html
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/evilmarty/html.css/dist/html.css">
+```
+
 ## Build
 
 [Gulp](https://gulpjs.org) is used to build the distribution.
@@ -38,5 +46,5 @@ This project uses code from [Shoelace](https://shoelace.style) library who deser
 ## TODO
 
 * [ ] Finish docs
-* [ ] Finish index.html
+* [x] Finish index.html
 * [ ] Test in popular browsers

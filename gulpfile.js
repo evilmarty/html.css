@@ -14,6 +14,16 @@ const plugins = [
   cssnano(),
 ]
 
+const stylelintOptions = {
+  failAfterError: true,
+  reporters: [
+    {
+      formatter: 'verbose',
+      console: true,
+    },
+  ],
+}
+
 const srcPath = './src'
 const htmlGlob = srcPath + '/*.html'
 const cssGlob = srcPath + '/*.css'
@@ -21,12 +31,7 @@ const distPath = './dist'
 
 function css() {
   return src(cssGlob)
-    .pipe(stylelint({
-      failAfterError: true,
-      reporters: [
-        {formatter: 'verbose', console: true},
-      ],
-    }))
+    .pipe(stylelint(stylelintOptions))
     .pipe(postcss(plugins))
     .pipe(dest(distPath))
     .pipe(browserSync.stream())
@@ -39,12 +44,7 @@ function html() {
 
 function lint() {
   return src(cssGlob)
-    .pipe(stylelint({
-      failAfterError: true,
-      reporters: [
-        {formatter: 'verbose', console: true},
-      ],
-    }))
+    .pipe(stylelint(stylelintOptions))
 }
 
 function serve() {

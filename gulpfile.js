@@ -1,12 +1,16 @@
 const { series, src, dest, watch } = require('gulp')
 const postcss = require('gulp-postcss')
-const cssnext = require('postcss-cssnext')
+const postcssPresetEnv = require('postcss-preset-env')
 const cssnano = require('cssnano')
 const stylelint = require('gulp-stylelint')
 const browserSync = require('browser-sync').create()
 
 const plugins = [
-  cssnext({ features: { rem: false } }),
+  postcssPresetEnv({
+    features: {
+      'color-mod-function': { unresolved: 'warn' }
+    }
+  }),
   cssnano(),
 ]
 
